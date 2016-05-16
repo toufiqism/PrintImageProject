@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/redColor"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/captureDocumentProceed"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/redColor"
+                android:id="@+id/nomineePhotoLayout"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="44dp"
+                    android:text="Nominee’s Photo:"
+                    android:textColor="@color/whiteColor" />
+
+                <ImageView
+                    android:id="@+id/nomineePhoto"
+                    android:layout_width="120dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="40dp"
+                    android:background="@color/whiteColor"
+                    android:scaleType="fitXY" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/redColor"
+                android:id="@+id/nomineeIdLayout"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Nominee’s ID"
+                    android:textColor="@color/whiteColor" />
+
+                <ImageView
+                    android:id="@+id/nomineeIdFront"
+                    android:layout_width="170dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/nomineeBack"
+                    android:background="@color/whiteColor" />
+
+                <ImageView
+                    android:id="@+id/nomineeBack"
+                    android:layout_width="170dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/whiteColor" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/redColor"
+                android:id="@+id/customerPhotoLayout"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:text="Customer’s Photo:"
+                    android:textColor="@color/whiteColor" />
+
+                <ImageView
+                    android:id="@+id/customerPhoto"
+                    android:layout_width="120dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="40dp"
+                    android:background="@color/whiteColor"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/redColor"
+                android:visibility="gone"
+                android:id="@+id/customerIdLayout"
+                >
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Customer’s ID"
+                    android:textColor="@color/whiteColor" />
+
+                <ImageView
+                    android:id="@+id/customerIdFront"
+                    android:layout_width="170dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/customerIdBack"
+                    android:background="@color/whiteColor" />
+
+                <ImageView
+                    android:id="@+id/customerIdBack"
+                    android:layout_width="170dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/whiteColor" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/captureDocumentProceed"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/whiteColor"
+        android:text="Proceed"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

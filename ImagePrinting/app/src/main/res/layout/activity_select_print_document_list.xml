@@ -124,7 +124,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:text="Proceed"
-        android:id="@+id/button"
+        android:id="@+id/proceed"
         android:layout_below="@+id/nomeneeId"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="96dp"
