@@ -1,14 +1,14 @@
-package com.example.sabbirhossain.imageprinting;
+package com.example.sabbirhossain.imageprinting.view;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.example.sabbirhossain.imageprinting.R;
 import com.example.sabbirhossain.imageprinting.utility.AppConstant;
 
 public class SelectPrintDocumentListActivity extends AppCompatActivity {
@@ -35,18 +35,18 @@ public class SelectPrintDocumentListActivity extends AppCompatActivity {
                 if (customerId.isChecked() || customerPhoto.isChecked() || nomineeId.isChecked() || nomineePhoto.isChecked()) {
 
                     if (customerId.isChecked()) {
-                        AppConstant.customerId=true;
+                        AppConstant.customerIdFlag =true;
                     }
                     if (customerPhoto.isChecked()) {
-                        AppConstant.customerPhoto=true;
+                        AppConstant.customerPhotoFlag =true;
 
                     }
                     if (nomineeId.isChecked()) {
-                        AppConstant.nomineeId=true;
+                        AppConstant.nomineeIdFlag =true;
 
                     }
                     if (nomineePhoto.isChecked()) {
-                        AppConstant.nomineePhoto=true;
+                        AppConstant.nomineePhotoFlag =true;
 
                     }
                     Intent intent=new Intent(SelectPrintDocumentListActivity.this,CaptureDocumentsActivity.class);
@@ -66,9 +66,9 @@ public class SelectPrintDocumentListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AppConstant.nomineeId=false;
-        AppConstant.nomineePhoto=false;
-        AppConstant.customerId=false;
-        AppConstant.customerPhoto=false;
+        AppConstant.nomineeIdFlag =false;
+        AppConstant.nomineePhotoFlag =false;
+        AppConstant.customerIdFlag =false;
+        AppConstant.customerPhotoFlag =false;
     }
 }

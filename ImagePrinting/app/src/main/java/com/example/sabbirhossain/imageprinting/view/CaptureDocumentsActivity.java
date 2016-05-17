@@ -1,10 +1,13 @@
-package com.example.sabbirhossain.imageprinting;
+package com.example.sabbirhossain.imageprinting.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.example.sabbirhossain.imageprinting.R;
 import com.example.sabbirhossain.imageprinting.utility.AppConstant;
 
 /**
@@ -12,7 +15,7 @@ import com.example.sabbirhossain.imageprinting.utility.AppConstant;
  */
 public class CaptureDocumentsActivity extends Activity {
     RelativeLayout customerPhotoLayout, customerIdLayout, nomineePhotoLayout, nomineeIdLayout;
-
+    Button proceesBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,22 +25,39 @@ public class CaptureDocumentsActivity extends Activity {
         customerPhotoLayout = (RelativeLayout) findViewById(R.id.customerPhotoLayout);
         nomineeIdLayout = (RelativeLayout) findViewById(R.id.nomineeIdLayout);
         nomineePhotoLayout = (RelativeLayout) findViewById(R.id.nomineePhotoLayout);
-        if (AppConstant.customerPhoto == true) {
+        proceesBtn= (Button) findViewById(R.id.captureDocumentProceed);
+
+
+        if (AppConstant.customerPhotoFlag == true) {
             customerPhotoLayout.setVisibility(View.VISIBLE);
 
         }
-        if (AppConstant.customerId == true) {
+        if (AppConstant.customerIdFlag == true) {
             customerIdLayout.setVisibility(View.VISIBLE);
 
         }
-        if (AppConstant.nomineePhoto == true) {
+        if (AppConstant.nomineePhotoFlag == true) {
             nomineePhotoLayout.setVisibility(View.VISIBLE);
 
         }
-        if (AppConstant.nomineeId == true) {
+        if (AppConstant.nomineeIdFlag == true) {
             nomineeIdLayout.setVisibility(View.VISIBLE);
 
         }
+
+
+      proceesBtn.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Intent intent=new Intent(CaptureDocumentsActivity.this,PhotoPreviewActivity.class);
+              startActivity(intent);
+
+          }
+      });
+
+
+
+
 
 
     }
