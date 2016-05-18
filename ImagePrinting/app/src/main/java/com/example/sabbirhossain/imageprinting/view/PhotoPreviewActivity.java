@@ -7,8 +7,6 @@ import android.widget.Button;
 
 import com.example.sabbirhossain.imageprinting.R;
 
-import org.json.JSONException;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -20,8 +18,8 @@ public class PhotoPreviewActivity extends Activity {
     Button printIdBtn;
     private WebViewPrint webViewPrint;
     public static final String bankName = "city";
-    private static final String TEMPLATE_HTML = bankName + "/template.html";
-    private static final String MINI_STATEMENT_TEMPLATE_HTML = bankName + "/miniStatementTemplate.html";
+    private static final String PHOTO_TEMPLATE_HTML = bankName + "/photoTemplate.html";
+    private static final String NID_TEMPLATE_HTML = bankName + "/nidTemplate.html";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +47,7 @@ public class PhotoPreviewActivity extends Activity {
             public void onClick(View v) {
                 try {
                     webViewPrint = new WebViewPrint(PhotoPreviewActivity.this);
-                    webViewPrint.print(getHtmlFile("photo"));
+                    webViewPrint.print(getHtmlFile("nid"));
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -67,9 +65,9 @@ public class PhotoPreviewActivity extends Activity {
 
     private String getHtml(String type) throws IOException {
         if (type.equals("nid")) {
-            return new HtmlHelper(this).getHtml(MINI_STATEMENT_TEMPLATE_HTML);
+            return new HtmlHelper(this).getHtml(NID_TEMPLATE_HTML);
         } else {
-            return new HtmlHelper(this).getHtml(TEMPLATE_HTML);
+            return new HtmlHelper(this).getHtml(PHOTO_TEMPLATE_HTML);
         }
     }
 }
