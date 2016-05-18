@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\AndroidProjects\PrintImageProject\ImagePrinting\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b7659cb0ace8962fd47ce42a5f1ca6332aafa9d4">
+        <dex dex="E:\AndroidProjects\PrintImageProject\ImagePrinting\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_2a319b311efc14ac735d1997bb5501a10c35eaed\classes.dex" />
+    </item>
+
+</items>
