@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sabbirhossain.imageprinting">
+
     <uses-feature android:name="android.hardware.camera2"></uses-feature>
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +25,11 @@
         </activity>
         <activity android:name=".view.CaptureDocumentsActivity" />
         <activity android:name=".view.PhotoPreviewActivity" />
-        <activity android:name=".view.IdCardCameraActivity"/>
+        <!--<activity android:name=".view.IdCardCameraActivity"/>-->
+        <activity android:name=".view.CustomerCaptureActivity" />
+        <activity
+            android:name=".view.NIDCaptureActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

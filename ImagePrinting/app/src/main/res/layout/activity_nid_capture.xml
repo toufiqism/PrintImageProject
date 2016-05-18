@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/cameraInNIDCapture"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/testLayoutInNIDCapture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent">
+
+            <RelativeLayout
+                android:id="@+id/rlrightPanelInNIDCapture"
+                android:layout_width="135dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:background="@color/blackColor">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:padding="10dp"
+                    android:text="Hold NID card under the box"
+                    android:textColor="@color/whiteColor"
+                    android:textStyle="bold"></TextView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlBottomPanelInNIDCapture"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/blackColor"
+                android:paddingTop="2dp">
+
+                <Button
+                    android:id="@+id/btnCancelInNIDCapture"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:layout_alignBottom="@+id/btnCaptureInNIDCapture"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="35dp"
+                    android:text="Cancel" />
+
+                <Button
+                    android:id="@+id/btnCaptureInNIDCapture"
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="35dp"
+                    android:text="Capture" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

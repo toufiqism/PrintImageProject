@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/camera_previewInCustomerCapture"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/image_gridInCustomerCapture"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="grid"
+
+            android:src="@drawable/phototemplate" />
+
+        <RelativeLayout
+            android:id="@+id/rlBottomPanelInCustomerCapture"
+            android:layout_width="fill_parent"
+            android:layout_height="95dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/black">
+
+
+            <Button
+                android:id="@+id/btnCancelInCustomerCapture"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/btnCaptureInCustomerCapture"
+                android:layout_alignBottom="@+id/btnCaptureInCustomerCapture"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="36dp"
+                android:padding="10sp"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/btnCaptureInCustomerCapture"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="36dp"
+                android:padding="10sp"
+                android:text="Capture" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

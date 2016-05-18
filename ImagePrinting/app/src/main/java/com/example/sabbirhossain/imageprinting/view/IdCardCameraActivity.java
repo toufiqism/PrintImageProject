@@ -1,3 +1,4 @@
+/*
 package com.example.sabbirhossain.imageprinting.view;
 
 import android.app.Activity;
@@ -20,9 +21,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+*/
 /**
  * Created by sabbirhossain on 5/17/16.
- */
+ *//*
+
 public class IdCardCameraActivity extends Activity implements SurfaceHolder.Callback, Camera.ShutterCallback, Camera.PictureCallback {
 
     Camera mCamera;
@@ -108,3 +111,4 @@ public class IdCardCameraActivity extends Activity implements SurfaceHolder.Call
         Log.i("PREVIEW","surfaceDestroyed");
     }
 }
+*/
