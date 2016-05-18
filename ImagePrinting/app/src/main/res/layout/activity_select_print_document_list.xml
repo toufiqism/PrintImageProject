@@ -4,10 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/redColor"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".view.SelectPrintDocumentListActivity">
 
     <RelativeLayout
@@ -32,8 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/relativeLayout"
-        android:background="@color/whiteColor"
-        />
+        android:background="@color/whiteColor" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
@@ -42,8 +37,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/relativeLayout"
         android:layout_marginTop="22dp"
-        android:background="@color/whiteColor"
-        >
+        android:background="@color/whiteColor">
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,17 +55,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/relativeLayout2"
-        android:background="@color/whiteColor"
-        />
+        android:background="@color/whiteColor" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout3"
         android:layout_width="250dp"
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/relativeLayout2"
         android:layout_marginTop="60dp"
-        android:background="@color/whiteColor"
-        android:id="@+id/relativeLayout3">
+        android:background="@color/whiteColor">
 
         <TextView
             android:layout_width="wrap_content"
@@ -84,51 +77,52 @@
     </RelativeLayout>
 
     <CheckBox
+        android:id="@+id/nomineePhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New CheckBox"
-        android:id="@+id/nomineePhoto"
-        android:layout_alignTop="@+id/relativeLayout3"
-        android:layout_alignStart="@+id/customerId"
         android:layout_alignBottom="@+id/relativeLayout3"
-        android:background="@color/whiteColor"/>
+        android:layout_alignStart="@+id/customerId"
+        android:layout_alignTop="@+id/relativeLayout3"
+        android:background="@color/whiteColor"
+        android:text="New CheckBox" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout4"
         android:layout_width="250dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/relativeLayout3"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout3"
         android:layout_marginTop="25dp"
-        android:background="@color/whiteColor"
-        android:id="@+id/relativeLayout4">
+        android:background="@color/whiteColor">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nominee’s ID required?"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="26dp"
-            android:textColor="@color/blackColor"/>
+            android:text="Nominee’s ID required?"
+            android:textColor="@color/blackColor" />
 
     </RelativeLayout>
 
     <CheckBox
+        android:id="@+id/nomeneeId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nomeneeId"
-        android:layout_alignTop="@+id/relativeLayout4"
         android:layout_alignStart="@+id/nomineePhoto"
-        android:background="@color/whiteColor"/>
+        android:layout_alignTop="@+id/relativeLayout4"
+        android:background="@color/whiteColor" />
 
     <Button
+        android:id="@+id/proceed"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text="Proceed"
-        android:id="@+id/proceed"
         android:layout_below="@+id/nomeneeId"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="96dp"
-        android:background="@color/whiteColor"/>
+        android:background="@color/whiteColor"
+        android:text="Proceed" />
 
 
 </RelativeLayout>

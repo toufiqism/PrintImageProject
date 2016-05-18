@@ -1,0 +1,106 @@
+[
+    {
+        "outputFile": "/Users/sabbirhossain/Desktop/PrintImageProject/vidtry-master/app/build/intermediates/res/merged/debug/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 43,
+                    "endOffset": 94
+                },
+                "from": {
+                    "file": "/Users/sabbirhossain/Desktop/PrintImageProject/vidtry-master/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 43,
+                        "endOffset": 94
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 99,
+                    "endColumn": 34,
+                    "endOffset": 129
+                },
+                "from": {
+                    "file": "/Users/sabbirhossain/Desktop/PrintImageProject/vidtry-master/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 99,
+                        "endColumn": 34,
+                        "endOffset": 129
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 134,
+                    "endColumn": 54,
+                    "endOffset": 184
+                },
+                "from": {
+                    "file": "/Users/sabbirhossain/Desktop/PrintImageProject/vidtry-master/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 134,
+                        "endColumn": 54,
+                        "endOffset": 184
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 189,
+                    "endLine": 7,
+                    "endColumn": 9,
+                    "endOffset": 300
+                },
+                "from": {
+                    "file": "/Users/sabbirhossain/Desktop/PrintImageProject/vidtry-master/app/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 1,
+                        "startOffset": 13,
+                        "endLine": 3,
+                        "endColumn": 9,
+                        "endOffset": 124
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 305,
+                    "endLine": 10,
+                    "endColumn": 10,
+                    "endOffset": 427
+                },
+                "from": {
+                    "file": "/Users/sabbirhossain/Desktop/PrintImageProject/vidtry-master/app/src/main/res/values/theme.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 2,
+                        "startOffset": 14,
+                        "endLine": 3,
+                        "endColumn": 10,
+                        "endOffset": 136
+                    }
+                }
+            }
+        ]
+    }
+]

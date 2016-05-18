@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/redColor"
+    tools:context=".view.SelectPrintDocumentListActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@color/whiteColor"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="76dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="26dp"
+            android:text="Customer’s photo required?"
+            android:textColor="@color/blackColor" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/customerPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/relativeLayout"
+        android:background="@color/whiteColor" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@color/whiteColor"
+        android:layout_below="@+id/customerPhoto"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="82dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="26dp"
+            android:text="Customer’s ID required?"
+            android:textColor="@color/blackColor" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/customerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/relativeLayout2"
+        android:background="@color/whiteColor" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@color/whiteColor"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="26dp"
+            android:text="Nominee’s photo required?"
+            android:textColor="@color/blackColor" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/nomineePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/relativeLayout3"
+        android:layout_alignStart="@+id/customerId"
+        android:layout_alignTop="@+id/relativeLayout3"
+        android:background="@color/whiteColor"
+        android:text="New CheckBox" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout4"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@color/whiteColor"
+        android:layout_below="@+id/relativeLayout3"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="64dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="26dp"
+            android:text="Nominee’s ID required?"
+            android:textColor="@color/blackColor" />
+
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/nomeneeId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/nomineePhoto"
+        android:layout_alignTop="@+id/relativeLayout4"
+        android:background="@color/whiteColor" />
+
+    <Button
+        android:id="@+id/proceed"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@color/whiteColor"
+        android:text="Proceed"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
