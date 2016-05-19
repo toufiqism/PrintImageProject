@@ -42,7 +42,7 @@
             if (elements != null) {
                 for (var i = 0; i < elements.length; i++) {
                     var imageElement = elements[i];
-                    imageElement.src = i % 3 === 2 ? 'file:///android_asset/city/nominee.jpg' : 'file:///android_asset/city/customer.png';
+                    imageElement.src = i % 3 === 2 ? 'nominee.png' : 'customer.png';
                     imageElement.onerror = function (ele) {
                         ele.srcElement.style.visibility = "hidden";
                     };

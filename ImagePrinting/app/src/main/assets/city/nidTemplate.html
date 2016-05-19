@@ -54,16 +54,16 @@
                 for (var i = 0; i < elements.length; i++) {
                     var imageElement = elements[i];
                     if (i == 0) {
-                        imageElement.src = 'file:///android_asset/city/customerNIDFront.jpg';
+                        imageElement.src = 'customerNIDFront.png';
                     }
                     else if (i == 1) {
-                        imageElement.src = 'file:///android_asset/city/customerNIDBack.jpg';
+                        imageElement.src = 'customerNIDBack.png';
                     }
                     else if (i == 2) {
-                        imageElement.src = 'file:///android_asset/city/nomineeNIDFront.jpg';
+                        imageElement.src = 'nomineeNIDFront.png';
                     }
                     else if (i == 3) {
-                        imageElement.src = 'file:///android_asset/city/nomineeNIDBack.jpg';
+                        imageElement.src = 'nomineeNIDBack.png';
                     }
                     imageElement.onerror = function (ele) {
                         ele.srcElement.style.visibility = "hidden";
