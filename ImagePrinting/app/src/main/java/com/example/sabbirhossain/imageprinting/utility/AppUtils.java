@@ -193,8 +193,10 @@ public class AppUtils {
     }
 
     public static void deleteImageFolder() {
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                AppName);
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                + "/Android/data/"
+                + AppName
+                + "/Files");
 
         if (mediaStorageDir.exists()) {
 

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.sabbirhossain.imageprinting.R;
 import com.example.sabbirhossain.imageprinting.utility.AppConstant;
@@ -46,6 +47,14 @@ public class CaptureDocumentsActivity extends Activity {
     Bitmap customerPhotoBitmap, customerIdBackBitmap, customerIdFrontBitmap, nomineePhotoBitmap, nomineeIdBackBitmap, nomineeIdFrontBitmap;
     byte[] c;
 
+    TextView customerImageTag, customerIdBackTag, customerIdFrontTag, nomineeImageTag, nomineeIdFrontTag, nomineeIdBackTag;
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -55,12 +64,23 @@ public class CaptureDocumentsActivity extends Activity {
         AppConstant.customerIdBackClicked = false;
         AppConstant.nomineeIdBackClicked = false;
         AppConstant.nomineeIdFrontClicked = false;
+       /* customerImageTag.setVisibility(View.VISIBLE);
+        nomineeImageTag.setVisibility(View.VISIBLE);
+
+        customerIdFrontTag.setVisibility(View.VISIBLE);
+        customerIdBackTag.setVisibility(View.VISIBLE);
+        nomineeIdBackTag.setVisibility(View.VISIBLE);
+        nomineeIdFrontTag.setVisibility(View.VISIBLE);
+*/
+
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture_document);
+        AppUtils.deleteImageFolder();
         customerIdLayout = (RelativeLayout) findViewById(R.id.customerIdLayout);
         customerPhotoLayout = (RelativeLayout) findViewById(R.id.customerPhotoLayout);
         nomineeIdLayout = (RelativeLayout) findViewById(R.id.nomineeIdLayout);
@@ -74,6 +94,14 @@ public class CaptureDocumentsActivity extends Activity {
         nomineeIdbackImg = (ImageView) findViewById(R.id.nomineeIdBack);
         nomineeIdFrontImg = (ImageView) findViewById(R.id.nomineeIdFront);
         nomineephotoImg = (ImageView) findViewById(R.id.nomineePhoto);
+
+
+        customerImageTag = (TextView) findViewById(R.id.customerPhotoTag);
+        nomineeImageTag = (TextView) findViewById(R.id.nomimeePhotoTag);
+        customerIdFrontTag = (TextView) findViewById(R.id.customerIdFrontTag);
+        customerIdBackTag = (TextView) findViewById(R.id.customerIdBackTag);
+        nomineeIdFrontTag = (TextView) findViewById(R.id.nomineeIdFrontTag);
+        nomineeIdBackTag = (TextView) findViewById(R.id.nomineeIdBackTag);
 
 
         if (AppConstant.customerPhotoFlag == true) {
@@ -114,6 +142,7 @@ public class CaptureDocumentsActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AppConstant.customerPhotoClicked = true;
+                customerImageTag.setVisibility(View.INVISIBLE);
                 Intent cameraIntent = new Intent(getApplicationContext(), CustomerCaptureActivity.class);
                 if (ImagePath != null) {
                     cameraIntent.putExtra(CustomerCaptureActivity.IMAGE_PATH, ImagePath);
@@ -128,6 +157,8 @@ public class CaptureDocumentsActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AppConstant.nomineePhotoClicked = true;
+                nomineeImageTag.setVisibility(View.INVISIBLE);
+
                 Intent cameraIntent = new Intent(getApplicationContext(), CustomerCaptureActivity.class);
                 if (ImagePath != null) {
                     cameraIntent.putExtra(CustomerCaptureActivity.IMAGE_PATH, ImagePath);
@@ -140,6 +171,8 @@ public class CaptureDocumentsActivity extends Activity {
         customerIdFrontImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                customerIdFrontTag.setVisibility(View.INVISIBLE);
+
                 AppConstant.customerIdFrontClicked = true;
                 Intent cameraIntent = new Intent(getApplicationContext(), NIDCaptureActivity.class);
                 if (ImagePath != null) {
@@ -157,6 +190,8 @@ public class CaptureDocumentsActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AppConstant.customerIdBackClicked = true;
+                customerIdBackTag.setVisibility(View.INVISIBLE);
+
                 Intent cameraIntent = new Intent(getApplicationContext(), NIDCaptureActivity.class);
                 if (ImagePath != null) {
                     cameraIntent.putExtra(
@@ -172,6 +207,8 @@ public class CaptureDocumentsActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AppConstant.nomineeIdFrontClicked = true;
+                nomineeIdFrontTag.setVisibility(View.INVISIBLE);
+
                 Intent cameraIntent = new Intent(getApplicationContext(), NIDCaptureActivity.class);
 
 
@@ -189,6 +226,8 @@ public class CaptureDocumentsActivity extends Activity {
             @Override
             public void onClick(View v) {
                 AppConstant.nomineeIdBackClicked = true;
+                nomineeIdBackTag.setVisibility(View.INVISIBLE);
+
                 Intent cameraIntent = new Intent(getApplicationContext(), NIDCaptureActivity.class);
 
 
@@ -212,6 +251,10 @@ public class CaptureDocumentsActivity extends Activity {
 
         if (requestCode == CUSTOMER_PHOTO) {
             try {
+                if (ImagePath == null) {
+
+                }
+
                 ImagePath = data.getStringExtra(CustomerCaptureActivity.IMAGE_PATH);
                 File bearerPic = new File(ImagePath);
 

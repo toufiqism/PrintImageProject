@@ -8,8 +8,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/captureDocumentProceed"
-        >
+        android:layout_above="@+id/captureDocumentProceed">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,13 +16,14 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/nomineePhotoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@color/redColor"
-                android:id="@+id/nomineePhotoLayout"
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -39,19 +39,29 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="40dp"
+                    android:adjustViewBounds="true"
                     android:background="@color/whiteColor"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/nomimeePhotoTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView6"
+                    android:layout_alignStart="@+id/nomineePhoto"
+                    android:text="Tap to capture Nominee’sPhoto"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/blackColor" />
 
 
             </RelativeLayout>
 
 
             <RelativeLayout
+                android:id="@+id/nomineeIdLayout"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@color/redColor"
-                android:id="@+id/nomineeIdLayout"
                 android:visibility="gone">
 
 
@@ -70,9 +80,9 @@
                     android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignTop="@+id/nomineeIdBack"
+                    android:adjustViewBounds="true"
                     android:background="@color/whiteColor"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:scaleType="fitXY" />
 
                 <ImageView
                     android:id="@+id/nomineeIdBack"
@@ -80,16 +90,39 @@
                     android:layout_height="100dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
                     android:background="@color/whiteColor"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/nomineeIdFrontTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="Tap to capture
+Nominee’s ID  Front"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/blackColor" />
+
+                <TextView
+                    android:id="@+id/nomineeIdBackTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/nomineeIdBack"
+                    android:layout_alignTop="@+id/nomineeIdFrontTag"
+                    android:text="Tap to capture
+Nominee’s ID Back"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/blackColor" />
+
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/customerPhotoLayout"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@color/redColor"
-                android:id="@+id/customerPhotoLayout"
                 android:visibility="gone">
 
                 <TextView
@@ -109,18 +142,27 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="40dp"
+                    android:adjustViewBounds="true"
                     android:background="@color/whiteColor"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/customerPhotoTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textView2"
+                    android:layout_alignStart="@+id/customerPhoto"
+                    android:text="Tap to capture Customer’s Photo"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/blackColor" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/customerIdLayout"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@color/redColor"
-                android:visibility="gone"
-                android:id="@+id/customerIdLayout"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textView8"
@@ -137,9 +179,9 @@
                     android:layout_height="100dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignTop="@+id/customerIdBack"
+                    android:adjustViewBounds="true"
                     android:background="@color/whiteColor"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:scaleType="fitXY" />
 
                 <ImageView
                     android:id="@+id/customerIdBack"
@@ -147,9 +189,30 @@
                     android:layout_height="100dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
                     android:background="@color/whiteColor"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"/>
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/customerIdFrontTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="Tap to capture
+Customer’s ID  Front"
+                    android:textColor="@color/blackColor"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Tap to capture
+Nominee’s ID Back"                    android:id="@+id/customerIdBackTag"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/blackColor"
+                    android:layout_alignStart="@+id/customerIdBack" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -159,11 +222,11 @@
         android:id="@+id/captureDocumentProceed"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:background="@color/whiteColor"
-        android:text="Proceed"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Proceed" />
 
 
 </RelativeLayout>
