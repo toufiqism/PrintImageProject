@@ -2,8 +2,14 @@ package com.example.sabbirhossain.imageprinting.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,7 +27,7 @@ import java.io.File;
 public class CaptureDocumentsActivity extends Activity {
     RelativeLayout customerPhotoLayout, customerIdLayout, nomineePhotoLayout, nomineeIdLayout;
     Button proceesBtn;
-
+    Handler handler = new Handler(Looper.getMainLooper());
     ImageView customerPhotoImg;
     ImageView customerIdFrontImg;
     ImageView customerIdBackImg;
@@ -36,6 +42,20 @@ public class CaptureDocumentsActivity extends Activity {
     private static final int NOMINEE_PHOTO = 116;
     String ImagePath;
     String photoContent;
+    String TAG = "CaptureDocumentsActivity";
+    Bitmap customerPhotoBitmap, customerIdBackBitmap, customerIdFrontBitmap, nomineePhotoBitmap, nomineeIdBackBitmap, nomineeIdFrontBitmap;
+    byte[] c;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AppConstant.customerPhotoClicked = false;
+        AppConstant.nomineePhotoClicked = false;
+        AppConstant.customerIdFrontClicked = false;
+        AppConstant.customerIdBackClicked = false;
+        AppConstant.nomineeIdBackClicked = false;
+        AppConstant.nomineeIdFrontClicked = false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +104,16 @@ public class CaptureDocumentsActivity extends Activity {
             }
         });
 
+
     }
 
     private void takePhoto() {
+
+
         customerPhotoImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppConstant.customerPhotoClicked = true;
                 Intent cameraIntent = new Intent(getApplicationContext(), CustomerCaptureActivity.class);
                 if (ImagePath != null) {
                     cameraIntent.putExtra(CustomerCaptureActivity.IMAGE_PATH, ImagePath);
@@ -100,12 +124,24 @@ public class CaptureDocumentsActivity extends Activity {
             }
         });
 
+        nomineephotoImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppConstant.nomineePhotoClicked = true;
+                Intent cameraIntent = new Intent(getApplicationContext(), CustomerCaptureActivity.class);
+                if (ImagePath != null) {
+                    cameraIntent.putExtra(CustomerCaptureActivity.IMAGE_PATH, ImagePath);
+                }
+                startActivityForResult(cameraIntent, NOMINEE_PHOTO);
+            }
+        });
+
+
         customerIdFrontImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppConstant.customerIdFrontClicked = true;
                 Intent cameraIntent = new Intent(getApplicationContext(), NIDCaptureActivity.class);
-
-
                 if (ImagePath != null) {
                     cameraIntent.putExtra(
                             NIDCaptureActivity.IMAGE_PATH,
@@ -120,9 +156,8 @@ public class CaptureDocumentsActivity extends Activity {
         customerIdBackImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppConstant.customerIdBackClicked = true;
                 Intent cameraIntent = new Intent(getApplicationContext(), NIDCaptureActivity.class);
-
-
                 if (ImagePath != null) {
                     cameraIntent.putExtra(
                             NIDCaptureActivity.IMAGE_PATH,
@@ -136,6 +171,7 @@ public class CaptureDocumentsActivity extends Activity {
         nomineeIdFrontImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppConstant.nomineeIdFrontClicked = true;
                 Intent cameraIntent = new Intent(getApplicationContext(), NIDCaptureActivity.class);
 
 
@@ -152,6 +188,7 @@ public class CaptureDocumentsActivity extends Activity {
         nomineeIdbackImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppConstant.nomineeIdBackClicked = true;
                 Intent cameraIntent = new Intent(getApplicationContext(), NIDCaptureActivity.class);
 
 
@@ -165,21 +202,14 @@ public class CaptureDocumentsActivity extends Activity {
 
             }
         });
-        nomineephotoImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cameraIntent = new Intent(getApplicationContext(), CustomerCaptureActivity.class);
-                if (ImagePath != null) {
-                    cameraIntent.putExtra(CustomerCaptureActivity.IMAGE_PATH, ImagePath);
-                }
-                startActivityForResult(cameraIntent, NOMINEE_PHOTO);
-            }
-        });
+
     }
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+
         if (requestCode == CUSTOMER_PHOTO) {
             try {
                 ImagePath = data.getStringExtra(CustomerCaptureActivity.IMAGE_PATH);
@@ -188,6 +218,9 @@ public class CaptureDocumentsActivity extends Activity {
                 if (bearerPic.exists()) {
                     //customerPhotoImg.setVisibility(View.GONE);
                     customerPhotoImg.setImageBitmap(BitmapFactory.decodeFile(bearerPic.getAbsolutePath()));
+                    customerPhotoBitmap = BitmapFactory.decodeFile(bearerPic.getAbsolutePath());
+
+                    Log.e(TAG, "cusbit" + customerPhotoBitmap.toString());
                     String imageHexString = AppUtils.bytesToHexString(AppUtils.convertFileToByte(ImagePath));
                     photoContent = imageHexString;
                 }
@@ -203,8 +236,16 @@ public class CaptureDocumentsActivity extends Activity {
                 File bearerPic = new File(ImagePath);
 
                 if (bearerPic.exists()) {
+
+                    if (nomineePhotoBitmap != null) {
+                        nomineePhotoBitmap.recycle();
+                        nomineePhotoBitmap = null;
+                    }
                     //customerPhotoImg.setVisibility(View.GONE);
                     nomineephotoImg.setImageBitmap(BitmapFactory.decodeFile(bearerPic.getAbsolutePath()));
+                    nomineePhotoBitmap = BitmapFactory.decodeFile(bearerPic.getAbsolutePath());
+                    // Log.e(TAG, "nombit" + customerPhotoBitmap.toString());
+
                     String imageHexString = AppUtils.bytesToHexString(AppUtils.convertFileToByte(ImagePath));
                     photoContent = imageHexString;
                 }
@@ -222,6 +263,7 @@ public class CaptureDocumentsActivity extends Activity {
                 if (bearerPic.exists()) {
                     //customerPhotoImg.setVisibility(View.GONE);
                     customerIdFrontImg.setImageBitmap(BitmapFactory.decodeFile(bearerPic.getAbsolutePath()));
+                    customerIdFrontBitmap = BitmapFactory.decodeFile(bearerPic.getAbsolutePath());
                     String imageHexString = AppUtils.bytesToHexString(AppUtils.convertFileToByte(ImagePath));
                     photoContent = imageHexString;
                 }
@@ -238,6 +280,7 @@ public class CaptureDocumentsActivity extends Activity {
                 if (bearerPic.exists()) {
                     //customerPhotoImg.setVisibility(View.GONE);
                     customerIdBackImg.setImageBitmap(BitmapFactory.decodeFile(bearerPic.getAbsolutePath()));
+                    customerIdBackBitmap = BitmapFactory.decodeFile(bearerPic.getAbsolutePath());
                     String imageHexString = AppUtils.bytesToHexString(AppUtils.convertFileToByte(ImagePath));
                     photoContent = imageHexString;
                 }
@@ -254,6 +297,7 @@ public class CaptureDocumentsActivity extends Activity {
                 if (bearerPic.exists()) {
                     //customerPhotoImg.setVisibility(View.GONE);
                     nomineeIdFrontImg.setImageBitmap(BitmapFactory.decodeFile(bearerPic.getAbsolutePath()));
+                    customerIdFrontBitmap = BitmapFactory.decodeFile(bearerPic.getAbsolutePath());
                     String imageHexString = AppUtils.bytesToHexString(AppUtils.convertFileToByte(ImagePath));
                     photoContent = imageHexString;
                 }
@@ -269,7 +313,10 @@ public class CaptureDocumentsActivity extends Activity {
 
                 if (bearerPic.exists()) {
                     //customerPhotoImg.setVisibility(View.GONE);
+
+
                     nomineeIdbackImg.setImageBitmap(BitmapFactory.decodeFile(bearerPic.getAbsolutePath()));
+                    nomineeIdBackBitmap = BitmapFactory.decodeFile(bearerPic.getAbsolutePath());
                     String imageHexString = AppUtils.bytesToHexString(AppUtils.convertFileToByte(ImagePath));
                     photoContent = imageHexString;
                 }

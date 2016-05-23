@@ -106,7 +106,7 @@ public class NIDCaptureActivity extends Activity {
         public void onPictureTaken(byte[] data, Camera camera) {
             // TODO Auto-generated method stub
 
-            File pictureFile = AppUtils.IFRPic();
+            File pictureFile = AppUtils.getCroppedImageFile();
 
             if (pictureFile == null) {
                 return;
@@ -236,7 +236,7 @@ public class NIDCaptureActivity extends Activity {
 
         FileOutputStream fos = null;
         try {
-            File cImage = AppUtils.IFRPic();
+            File cImage = AppUtils.getCroppedImageFile();
             fos = new FileOutputStream(cImage);
             scaledCropImage.compress(Bitmap.CompressFormat.JPEG, 80, fos);
 

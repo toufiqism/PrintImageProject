@@ -10,5 +10,14 @@ public class AppConstant {
     public static boolean nomineePhotoFlag =false;
     public final static String DEVICE_NAME_ECONNECT_EH = "Econnect";
     public static final int PHOTO_DIMENSION = 300;
+    public static  String PHOTO="";
+    public static String PHOTO_IAMGE_PATH="";
+    public static boolean customerPhotoClicked=false;
+    public static boolean nomineePhotoClicked=false;
+    public static boolean customerIdBackClicked=false;
+    public static boolean customerIdFrontClicked=false;
+    public static boolean nomineeIdFrontClicked=false;
+    public static boolean nomineeIdBackClicked=false;
+
 
 }

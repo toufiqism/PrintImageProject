@@ -43,7 +43,7 @@ public class CustomerCaptureActivity extends Activity {
     SharedPreferences.Editor defaultSharedPreferencesEditor;
     String selectedFPDevice = "";
     String manufacturerName = "";
-
+    File pictureFile;
     @Override
     public void onBackPressed() {
         // super.onBackPressed();
@@ -114,7 +114,9 @@ public class CustomerCaptureActivity extends Activity {
         public void onPictureTaken(byte[] data, Camera camera) {
             // TODO Auto-generated method stub
             Log.d(TAG, "picture Taken: " + data.toString());
-            File pictureFile = AppUtils.getImageFile();
+            File pictureFile = AppUtils.getCroppedImageFile();
+
+            Log.e(TAG,"picfile "+pictureFile);
             if (pictureFile == null) {
                 return;
             }
@@ -135,7 +137,6 @@ public class CustomerCaptureActivity extends Activity {
             } catch (IOException e) {
                 AppUtils.PrintError("IOException: " + e.getMessage());
             }
-
         }
     };
 
@@ -226,7 +227,7 @@ public class CustomerCaptureActivity extends Activity {
     }
 
 
-    void ReturnActivityResult(String imagePath) {
+    void ReturnActivityResult(String  imagePath) {
         Intent data = new Intent();
         data.putExtra(CustomerCaptureActivity.IMAGE_PATH, imagePath);
         if (getParent() == null) {

@@ -23,7 +23,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -71,6 +70,10 @@ public class AppUtils {
     public static String FOR_AGENT_VERIFICATION = "";
 
     public static String SEARCH_BY = "";
+    public static int number = 1;
+    public static String imageName = "";
+    public static String nid = "";
+
 
     public static void clearRetryInfo() {
         No_OF_RETRY = 0;
@@ -92,9 +95,6 @@ public class AppUtils {
 
         return bitMapData;
     }
-
-
-
 
 
     public static File getChequeImageFile() {
@@ -166,12 +166,30 @@ public class AppUtils {
         return GetNextOutputFile(fileName);
     }
 
-    public static File getImageFile() {
+    /*public static File getImageFile() {
         return GetNextOutputFile("Image");
-    }
+    }*/
 
     public static File getCroppedImageFile() {
-        return GetNextOutputFile("Image_crop");
+        if (AppConstant.customerPhotoClicked == true) {
+            imageName = "customerImage.png";
+        }
+        if (AppConstant.nomineePhotoClicked == true) {
+            imageName = "nomineeImage.png";
+        }
+        if (AppConstant.nomineeIdFrontClicked == true) {
+            imageName = "nomineeIdFrontImage.png";
+        }
+        if (AppConstant.nomineeIdBackClicked == true) {
+            imageName = "nomineeIdBackImage.png";
+        }
+        if (AppConstant.customerIdBackClicked == true) {
+            imageName = "customerIdBackImage.png";
+        }
+        if (AppConstant.customerIdFrontClicked == true) {
+            imageName = "customerIdFrontImage.png";
+        }
+        return GetNextOutputFile(imageName);
     }
 
     public static void deleteImageFolder() {
@@ -194,9 +212,12 @@ public class AppUtils {
      */
     private static File GetNextOutputFile(String fileName) {
 
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                AppName);
-
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                + "/Android/data/"
+                + AppName
+                + "/Files");
+        Log.e(TAG, "media " + mediaStorageDir.toString());
+        AppConstant.PHOTO_IAMGE_PATH = mediaStorageDir.toString();
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
                 PrintError("failed to create directory");
@@ -204,10 +225,14 @@ public class AppUtils {
                 return null;
             }
         }
+       /* String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
+        String mImageName = "MI_" + timeStamp + ".jpg";*/
 
-        File mediaFile = new File(mediaStorageDir.getPath() + File.separator + fileName + ".jpg");
-        if (mediaFile.exists())
-            mediaFile.delete();
+        File mediaFile = new File(mediaStorageDir.getPath() + File.separator + fileName);
+        Log.e(TAG, "getPath " + mediaStorageDir.getPath() + "separator " + File.separator + "fileName " + fileName);
+
+    /*    if (mediaFile.exists())
+            mediaFile.delete();*/
 
         return mediaFile;
     }
@@ -241,10 +266,10 @@ public class AppUtils {
             fileInputStream.close();
 
             for (int i = 0; i < bFile.length; i++) {
-                System.out.print((char) bFile[i]);
+               // System.out.print((char) bFile[i]);
             }
 
-            System.out.println("Done");
+            //System.out.println("Done");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -306,9 +331,6 @@ public class AppUtils {
     }
 
 
-
-
-
     public static boolean isInternetAvailable(Context context) {
 
         boolean connected = false;
@@ -326,350 +348,6 @@ public class AppUtils {
         return connected;
     }
 
-    public static String getSystemDateTime(String dateTimeFormat) {
-        Date date = new Date();
-        SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(dateTimeFormat);
-        return dateTimeFormatter.format(date);
-
-    }
-
-
-    public static String formatDateForReceiptPrintDate(String timestamp) {
-        SimpleDateFormat formatter;
-        try {
-
-            // formatter = new SimpleDateFormat("EEE MMM d, y KK:mm:ss aaa");
-            formatter = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss aaa");
-
-        } catch (Exception e) {
-            formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        }
-
-        Date date;
-        try {
-
-            date = new Date(Long.valueOf(timestamp));
-            // Date date = new Date(Timestamp.valueOf(timestamp).getTime()); //
-            // exception
-            // Date date = new Date(timestamp); // exception
-            // Date date = formatter.parse(timestamp); // exception
-        } catch (Exception e) {
-            date = new Date();
-        }
-
-        return formatter.format(date);
-    }
-
-
-    public static String formatDateForReceiptPrintDate(Date timestamp) {
-        SimpleDateFormat formatter;
-        try {
-
-            // formatter = new SimpleDateFormat("EEE MMM d, y KK:mm:ss aaa");
-            formatter = new SimpleDateFormat("dd-MMM-yyyy hh:mm:ss aaa");
-
-        } catch (Exception e) {
-            formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        }
-
-        Date date;
-        try {
-
-            date = timestamp;
-            // Date date = new Date(Timestamp.valueOf(timestamp).getTime()); //
-            // exception
-            // Date date = new Date(timestamp); // exception
-            // Date date = formatter.parse(timestamp); // exception
-        } catch (Exception e) {
-            date = new Date();
-        }
-
-        return formatter.format(date);
-    }
-
-
-    public static String formatDateForReceipt(String timestamp) {
-        SimpleDateFormat formatter;
-        try {
-
-            // formatter = new SimpleDateFormat("EEE MMM d, y KK:mm:ss aaa");
-            formatter = new SimpleDateFormat("dd-MMM-yyyy");
-
-        } catch (Exception e) {
-            formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        }
-
-        Date date;
-        try {
-
-            date = new Date(Long.valueOf(timestamp));
-            // Date date = new Date(Timestamp.valueOf(timestamp).getTime()); //
-            // exception
-            // Date date = new Date(timestamp); // exception
-            // Date date = formatter.parse(timestamp); // exception
-        } catch (Exception e) {
-            date = new Date();
-        }
-
-        return formatter.format(date);
-    }
-
-    public static String formatDate(String timestamp) {
-        SimpleDateFormat formatter;
-        try {
-
-            // formatter = new SimpleDateFormat("EEE MMM d, y KK:mm:ss aaa");
-            formatter = new SimpleDateFormat("EEE MMM d, y hh:mm:ss aaa");
-
-        } catch (Exception e) {
-            formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        }
-
-        Date date;
-        try {
-
-            date = new Date(Long.valueOf(timestamp));
-            // Date date = new Date(Timestamp.valueOf(timestamp).getTime()); //
-            // exception
-            // Date date = new Date(timestamp); // exception
-            // Date date = formatter.parse(timestamp); // exception
-        } catch (Exception e) {
-            date = new Date();
-        }
-
-        return formatter.format(date);
-    }
-
-    public static String getYesterdayDateString(String dateTimeFormat) {
-        SimpleDateFormat dateTimeFormatter = new SimpleDateFormat(dateTimeFormat);
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -1);
-        return dateTimeFormatter.format(cal.getTime());
-    }
-
-    public static String getCurrentTime() {
-        Date date = new Date();
-        SimpleDateFormat dateTimeFormatter = new SimpleDateFormat("yyyy/MM/dd HH mm ss a");
-        return dateTimeFormatter.format(date);
-
-    }
-
-
-    public static String AmountInTakaFormat(Double amount) {
-
-        DecimalFormat dFormat = new DecimalFormat("###,##,##,###.00");
-        return dFormat.format(amount);
-    }
-
-
-    public static String toTitleCase(String input) {
-        StringBuilder titleCase = new StringBuilder();
-        boolean nextTitleCase = true;
-
-        for (char c : input.toCharArray()) {
-            if (Character.isSpaceChar(c)) {
-                nextTitleCase = true;
-            } else if (nextTitleCase) {
-                c = Character.toTitleCase(c);
-                nextTitleCase = false;
-            }
-
-            titleCase.append(c);
-        }
-
-        return titleCase.toString();
-    }
-
-
-
-
-
-
-
-    public static String setMobileNumberPrefix(String mobileNumber) {
-
-        if (mobileNumber.startsWith("0")) {
-            mobileNumber = "+88" + mobileNumber;
-        } else if (mobileNumber.startsWith("88")) {
-
-            mobileNumber = "+" + mobileNumber;
-
-        } else if (mobileNumber.startsWith("+")) {
-
-            return mobileNumber;
-        }
-
-        return mobileNumber;
-
-    }
-
-    public static String getServerAddressFromConfig(Context context) {
-        Resources resources = context.getResources();
-        AssetManager assetManager = resources.getAssets();
-        String server_address = "";
-
-        try {
-            InputStream inputStream = assetManager.open("config.properties");
-            Properties properties = new Properties();
-            properties.load(inputStream);
-            server_address = properties.getProperty("SERVER_ADDRESS");
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return server_address;
-
-    }
-
-    public static boolean isEmailMandatoryFromConfig(Context context) {
-        Resources resources = context.getResources();
-        AssetManager assetManager = resources.getAssets();
-        boolean isEMailMandatory = true;
-
-        try {
-            InputStream inputStream = assetManager.open("config.properties");
-            Properties properties = new Properties();
-            properties.load(inputStream);
-            isEMailMandatory = Boolean.parseBoolean(properties.getProperty("IS_EMAIL_MANDATORY"));
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return isEMailMandatory;
-
-    }
-
-    public static String roundUpFraction(String number) {
-
-        try {
-
-            // number = new java.text.DecimalFormat("#.00").format(Double
-            // .valueOf(number));
-            number = new DecimalFormat("0.00").format(Double.valueOf(number));
-
-        } catch (Exception e) {
-        }
-
-        return number;
-    }
-
-    public static String getAppBuildNumber() {
-        String buildNumber = "";
-        return buildNumber;
-    }
-
-    public static ArrayList<String> getMonthList() {
-
-        ArrayList<String> months = new ArrayList<String>();
-
-        months.add("January");
-        months.add("February");
-        months.add("March");
-        months.add("April");
-        months.add("May");
-        months.add("June");
-        months.add("July");
-        months.add("August");
-        months.add("September");
-        months.add("October");
-        months.add("November");
-        months.add("December");
-
-        return months;
-
-    }
-
-    public static ArrayList<String> convertIntegerToStringArrayList(int iList[]) {
-
-        ArrayList<String> sList = new ArrayList<String>();
-
-        for (int i = 0; i < iList.length; ++i) {
-
-            sList.add(String.valueOf(iList[i]));
-
-        }
-
-        return sList;
-
-    }
-
-    public static ArrayList<String> getPBSList() {
-
-        ArrayList<String> pbsList = new ArrayList<String>();
-
-        pbsList.add("Bagerhat PBS");
-        pbsList.add("Barisal PBS-1");
-        pbsList.add("Barisal PBS-2");
-        pbsList.add("Bhola PBS");
-        pbsList.add("Bogra PBS");
-        pbsList.add("Brahman Baria PBS");
-        pbsList.add("Chandpur PBS");
-        pbsList.add("ChapaiNawabgonj PBS");
-        pbsList.add("Chittagong PBS-1");
-        pbsList.add("Chittagong PBS-2");
-        pbsList.add("Chittagong PBS-3");
-        pbsList.add("Comilla PBS-1");
-        pbsList.add("Comilla PBS-2");
-        pbsList.add("Comilla PBS-3");
-        pbsList.add("Cox's Bazar PBS");
-        pbsList.add("Dhaka PBS-1");
-        pbsList.add("Dhaka PBS-2");
-        pbsList.add("Dhaka PBS-3");
-        pbsList.add("Dinajpur PBS-1");
-        pbsList.add("Dinajpur PBS-2");
-        ;
-
-        return pbsList;
-
-    }
-
-    public static boolean setMobileDataEnabled(Context context, boolean enabled) {
-
-        try {
-            final ConnectivityManager conman = (ConnectivityManager) context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-            final Class conmanClass = Class.forName(conman.getClass().getName());
-            final Field connectivityManagerField = conmanClass.getDeclaredField("mService");
-            connectivityManagerField.setAccessible(true);
-            final Object connectivityManager = connectivityManagerField.get(conman);
-            final Class connectivityManagerClass = Class.forName(connectivityManager.getClass().getName());
-            final Method setMobileDataEnabledMethod = connectivityManagerClass.getDeclaredMethod("setMobileDataEnabled",
-                    Boolean.TYPE);
-            setMobileDataEnabledMethod.setAccessible(true);
-
-            setMobileDataEnabledMethod.invoke(connectivityManager, enabled);
-
-            return true;
-        } catch (Exception ex) {
-
-            return false;
-
-        }
-    }
-
-
-    public static Location getLocation(Context context) {
-
-        LocationManager locationManager;
-        Location location = null;
-        Criteria criteria;
-
-        String provider;
-
-        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-
-        criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-        criteria.setCostAllowed(false);
-
-        provider = locationManager.getBestProvider(criteria, false);
-
-        //location = locationManager.getLastKnownLocation(provider);
-
-        return location;
-
-    }
 
     public static boolean isRightDevicePaired() {
         boolean rightDevicePaired = false;
@@ -704,12 +382,15 @@ public class AppUtils {
     }
 
     public static File IFRPic() {
-        return getIFRPicFile("NID");
+        return getIFRPicFile(nid);
     }
 
     private static File getIFRPicFile(String string) {
-        File IFRPicFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                AppName);
+        File IFRPicFile = new File(Environment.getExternalStorageDirectory()
+                + "/Android/data/"
+                + AppName
+                + "/Files");
+
 
         if (!IFRPicFile.exists()) {
             if (!IFRPicFile.mkdirs()) {
@@ -717,14 +398,13 @@ public class AppUtils {
                 return null;
             }
         }
-        File finalIFRPic = new File(IFRPicFile.getPath() + File.separator + string + ".jpg");
+        File finalIFRPic = new File(IFRPicFile.getPath() + File.separator + string);
+        Log.e(TAG, "final " + finalIFRPic.toString()+" sel "+File.separator+" st ");
         if (finalIFRPic.exists()) {
             finalIFRPic.delete();
         }
         return finalIFRPic;
     }
-
-
 
 
     public static File ScaledFileForCheque() {

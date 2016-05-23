@@ -2,27 +2,194 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/redColor"
+    android:background="@color/whiteColor"
     android:orientation="vertical">
-
-
-    <Button
-        android:id="@+id/printPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:text="print photo" />
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout5"
+        android:background="@color/redColor">
 
-    <Button
-        android:id="@+id/printId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/printPhoto"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="125dp"
-        android:text="print Id" />
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="100dp"
+            android:id="@+id/photoGrid_1"
+            android:background="@color/whiteColor"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paper Size: A6"
+            android:id="@+id/textView3"
+            android:textColor="@color/whiteColor"
+            android:textSize="25sp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/photoGrid_1"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"/>
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="100dp"
+            android:id="@+id/photoGrid_2"
+            android:layout_below="@+id/textView3"
+            android:layout_toEndOf="@+id/photoGrid_1"
+            android:background="@color/whiteColor"
+            android:layout_marginLeft="3dp"/>
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="100dp"
+            android:id="@+id/photoGrid_3"
+            android:layout_below="@+id/textView3"
+            android:layout_toEndOf="@+id/photoGrid_2"
+            android:background="@color/whiteColor"
+            android:layout_marginLeft="3dp"/>
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="100dp"
+            android:id="@+id/photoGrid_4"
+            android:layout_below="@+id/photoGrid_1"
+            android:layout_alignParentStart="true"
+            android:background="@color/whiteColor"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"/>
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="100dp"
+            android:id="@+id/photoGrid_5"
+            android:layout_alignTop="@+id/photoGrid_4"
+            android:layout_alignStart="@+id/photoGrid_2"
+            android:background="@color/whiteColor"/>
+
+        <ImageView
+            android:layout_width="95dp"
+            android:layout_height="100dp"
+            android:id="@+id/photoGrid_6"
+            android:background="@color/whiteColor"
+            android:layout_alignTop="@+id/photoGrid_5"
+            android:layout_alignStart="@+id/photoGrid_3" />
+
+        <Button
+            android:id="@+id/printPhoto"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:text="print photo"
+            android:layout_alignBottom="@+id/photoGrid_6"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="61dp"
+            android:background="@color/whiteColor"/>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="Email"
+            android:id="@+id/email"
+            android:layout_below="@+id/textView3"
+            android:layout_alignStart="@+id/printPhoto"
+            android:background="@color/whiteColor"/>
+
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativeLayout5"
+        android:layout_alignParentEnd="true"
+        android:background="@color/redColor"
+        android:layout_marginTop="5dp">
+        <Button
+            android:id="@+id/printId"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:text="print Id"
+            android:background="@color/whiteColor"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID Copy of customer and Nominee"
+            android:id="@+id/textView4"
+            android:layout_marginTop="21dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/whiteColor"
+            android:textSize="25sp"
+            />
+
+        <RelativeLayout
+            android:layout_width="360dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentStart="true"
+            android:background="@color/whiteColor"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/relativeLayout6">
+
+
+            <ImageView
+                android:layout_width="155dp"
+                android:layout_height="205dp"
+                android:id="@+id/customerIdFrontPreview"
+                android:background="@color/blackColor"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="15dp"
+                android:scaleType="fitXY"
+                />
+
+
+
+            <ImageView
+                android:layout_width="155dp"
+                android:layout_height="205dp"
+                android:id="@+id/customerIdBackPreview"
+                android:background="@color/blackColor"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="15dp"
+                android:scaleType="fitXY"
+                />
+
+            <ImageView
+                android:layout_width="155dp"
+                android:layout_height="205dp"
+                android:id="@+id/nomineeIdBackPreview"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/blackColor"
+                android:layout_margin="15dp"
+                android:scaleType="fitXY"
+                />
+
+            <ImageView
+                android:layout_width="155dp"
+                android:layout_height="205dp"
+                android:id="@+id/nomineeIdFrontPreview"
+                android:layout_alignTop="@+id/nomineeIdBackPreview"
+                android:layout_alignStart="@+id/customerIdFrontPreview"
+                android:background="@color/blackColor"
+                android:scaleType="fitXY"
+
+                />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
 
 
 </RelativeLayout>
