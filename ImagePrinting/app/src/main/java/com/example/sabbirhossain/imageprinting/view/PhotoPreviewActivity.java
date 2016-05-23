@@ -60,22 +60,6 @@ public class PhotoPreviewActivity extends Activity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-     /*    customerImageBitmap=null;
-         nomineeImageBitmap=null;
-         customerIdBackBitmap=null;
-         customerIdFrontBitmap=null;
-         nomineeIdBackBitmap=null;
-         nomineeIdFrontBitmap=null;
-*/
-
-
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_preview);
