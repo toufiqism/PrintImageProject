@@ -53,12 +53,7 @@ public class PhotoPreviewActivity extends Activity {
     Bitmap customerIdFrontBitmap;
     Bitmap nomineeIdBackBitmap;
     Bitmap nomineeIdFrontBitmap;
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
