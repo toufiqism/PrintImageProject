@@ -26,7 +26,7 @@
         <activity android:name=".view.CaptureDocumentsActivity" />
         <activity android:name=".view.PhotoPreviewActivity" />
         <!--<activity android:name=".view.IdCardCameraActivity"/>-->
-        <activity android:name=".view.CustomerCaptureActivity" />
+        <activity android:name=".view.CustomerAndNomineeCaptureActivity" />
         <activity
             android:name=".view.NIDCaptureActivity"
             android:screenOrientation="landscape" />

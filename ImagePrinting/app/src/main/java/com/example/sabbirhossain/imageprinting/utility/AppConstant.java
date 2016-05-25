@@ -8,7 +8,7 @@ public class AppConstant {
     public static boolean customerPhotoFlag =false;
     public static boolean nomineeIdFlag =false;
     public static boolean nomineePhotoFlag =false;
-    public final static String DEVICE_NAME_ECONNECT_EH = "Econnect";
+    public final static String DEVICE_NAME_ECONNECT_EH = "";
     public static final int PHOTO_DIMENSION = 300;
     public static  String PHOTO="";
     public static String PHOTO_IAMGE_PATH="";

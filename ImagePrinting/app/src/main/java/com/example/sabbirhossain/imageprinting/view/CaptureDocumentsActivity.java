@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -143,9 +141,9 @@ public class CaptureDocumentsActivity extends Activity {
             public void onClick(View v) {
                 AppConstant.customerPhotoClicked = true;
                 customerImageTag.setVisibility(View.INVISIBLE);
-                Intent cameraIntent = new Intent(getApplicationContext(), CustomerCaptureActivity.class);
+                Intent cameraIntent = new Intent(getApplicationContext(), CustomerAndNomineeCaptureActivity.class);
                 if (ImagePath != null) {
-                    cameraIntent.putExtra(CustomerCaptureActivity.IMAGE_PATH, ImagePath);
+                    cameraIntent.putExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH, ImagePath);
                 }
 
                 startActivityForResult(cameraIntent, CUSTOMER_PHOTO);
@@ -159,9 +157,9 @@ public class CaptureDocumentsActivity extends Activity {
                 AppConstant.nomineePhotoClicked = true;
                 nomineeImageTag.setVisibility(View.INVISIBLE);
 
-                Intent cameraIntent = new Intent(getApplicationContext(), CustomerCaptureActivity.class);
+                Intent cameraIntent = new Intent(getApplicationContext(), CustomerAndNomineeCaptureActivity.class);
                 if (ImagePath != null) {
-                    cameraIntent.putExtra(CustomerCaptureActivity.IMAGE_PATH, ImagePath);
+                    cameraIntent.putExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH, ImagePath);
                 }
                 startActivityForResult(cameraIntent, NOMINEE_PHOTO);
             }
@@ -255,7 +253,7 @@ public class CaptureDocumentsActivity extends Activity {
 
                 }
 
-                ImagePath = data.getStringExtra(CustomerCaptureActivity.IMAGE_PATH);
+                ImagePath = data.getStringExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH);
                 File bearerPic = new File(ImagePath);
 
                 if (bearerPic.exists()) {
@@ -275,7 +273,7 @@ public class CaptureDocumentsActivity extends Activity {
 
         } else if (requestCode == NOMINEE_PHOTO) {
             try {
-                ImagePath = data.getStringExtra(CustomerCaptureActivity.IMAGE_PATH);
+                ImagePath = data.getStringExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH);
                 File bearerPic = new File(ImagePath);
 
                 if (bearerPic.exists()) {
@@ -300,7 +298,7 @@ public class CaptureDocumentsActivity extends Activity {
 
         } else if (requestCode == CUSTOMER_ID_FRONT) {
             try {
-                ImagePath = data.getStringExtra(CustomerCaptureActivity.IMAGE_PATH);
+                ImagePath = data.getStringExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH);
                 File bearerPic = new File(ImagePath);
 
                 if (bearerPic.exists()) {
@@ -317,7 +315,7 @@ public class CaptureDocumentsActivity extends Activity {
 
         } else if (requestCode == CUSTOMER_ID_BACK) {
             try {
-                ImagePath = data.getStringExtra(CustomerCaptureActivity.IMAGE_PATH);
+                ImagePath = data.getStringExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH);
                 File bearerPic = new File(ImagePath);
 
                 if (bearerPic.exists()) {
@@ -334,7 +332,7 @@ public class CaptureDocumentsActivity extends Activity {
 
         } else if (requestCode == NOMINEE_ID_FRONT) {
             try {
-                ImagePath = data.getStringExtra(CustomerCaptureActivity.IMAGE_PATH);
+                ImagePath = data.getStringExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH);
                 File bearerPic = new File(ImagePath);
 
                 if (bearerPic.exists()) {
@@ -351,7 +349,7 @@ public class CaptureDocumentsActivity extends Activity {
 
         } else if (requestCode == NOMINEE_ID_BACK) {
             try {
-                ImagePath = data.getStringExtra(CustomerCaptureActivity.IMAGE_PATH);
+                ImagePath = data.getStringExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH);
                 File bearerPic = new File(ImagePath);
 
                 if (bearerPic.exists()) {
