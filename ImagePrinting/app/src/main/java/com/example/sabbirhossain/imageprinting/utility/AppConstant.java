@@ -18,6 +18,4 @@ public class AppConstant {
     public static boolean customerIdFrontClicked=false;
     public static boolean nomineeIdFrontClicked=false;
     public static boolean nomineeIdBackClicked=false;
-
-
 }

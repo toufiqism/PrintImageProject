@@ -25,7 +25,7 @@ import java.io.File;
  */
 public class CaptureDocumentsActivity extends Activity {
     RelativeLayout customerPhotoLayout, customerIdLayout, nomineePhotoLayout, nomineeIdLayout;
-    Button proceesBtn;
+    Button proceedBtn;
     Handler handler = new Handler(Looper.getMainLooper());
     ImageView customerPhotoImg;
     ImageView customerIdFrontImg;
@@ -62,16 +62,6 @@ public class CaptureDocumentsActivity extends Activity {
         AppConstant.customerIdBackClicked = false;
         AppConstant.nomineeIdBackClicked = false;
         AppConstant.nomineeIdFrontClicked = false;
-       /* customerImageTag.setVisibility(View.VISIBLE);
-        nomineeImageTag.setVisibility(View.VISIBLE);
-
-        customerIdFrontTag.setVisibility(View.VISIBLE);
-        customerIdBackTag.setVisibility(View.VISIBLE);
-        nomineeIdBackTag.setVisibility(View.VISIBLE);
-        nomineeIdFrontTag.setVisibility(View.VISIBLE);
-*/
-
-
     }
 
     @Override
@@ -83,7 +73,7 @@ public class CaptureDocumentsActivity extends Activity {
         customerPhotoLayout = (RelativeLayout) findViewById(R.id.customerPhotoLayout);
         nomineeIdLayout = (RelativeLayout) findViewById(R.id.nomineeIdLayout);
         nomineePhotoLayout = (RelativeLayout) findViewById(R.id.nomineePhotoLayout);
-        proceesBtn = (Button) findViewById(R.id.captureDocumentProceed);
+        proceedBtn = (Button) findViewById(R.id.captureDocumentProceed);
 
         customerIdBackImg = (ImageView) findViewById(R.id.customerIdBack);
         customerIdFrontImg = (ImageView) findViewById(R.id.customerIdFront);
@@ -121,7 +111,7 @@ public class CaptureDocumentsActivity extends Activity {
 
         takePhoto();
 
-        proceesBtn.setOnClickListener(new View.OnClickListener() {
+        proceedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CaptureDocumentsActivity.this, PhotoPreviewActivity.class);
