@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.sabbirhossain.imageprinting.R;
 import com.example.sabbirhossain.imageprinting.utility.AppConstant;
@@ -53,7 +54,7 @@ public class PhotoPreviewActivity extends Activity {
     Bitmap customerIdFrontBitmap;
     Bitmap nomineeIdBackBitmap;
     Bitmap nomineeIdFrontBitmap;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,33 +85,45 @@ public class PhotoPreviewActivity extends Activity {
             File customerIdFrontImage = new File(AppConstant.PHOTO_IAMGE_PATH, "customerIdFrontImage.png");
 
 
+            if (customerImage.exists()) {
                 customerImageBitmap = BitmapFactory.decodeStream(new FileInputStream(customerImage));
                 photoGrid_1.setImageBitmap(customerImageBitmap);
                 photoGrid_2.setImageBitmap(customerImageBitmap);
                 photoGrid_4.setImageBitmap(customerImageBitmap);
                 photoGrid_5.setImageBitmap(customerImageBitmap);
+            }
 
 
+            if (nomineeImage.exists()) {
                 nomineeImageBitmap = BitmapFactory.decodeStream(new FileInputStream(nomineeImage));
                 photoGrid_3.setImageBitmap(nomineeImageBitmap);
                 photoGrid_6.setImageBitmap(nomineeImageBitmap);
 
+            }
 
+
+            if (nomineeIdFrontImage.exists()) {
                 nomineeIdFrontBitmap = BitmapFactory.decodeStream(new FileInputStream(nomineeIdFrontImage));
                 nomineeIdFront.setImageBitmap(nomineeIdFrontBitmap);
+            }
 
 
+            if (nomineeIdBackImage.exists()) {
                 nomineeIdBackBitmap = BitmapFactory.decodeStream(new FileInputStream(nomineeIdBackImage));
+                nomineeIdBack.setImageBitmap(nomineeIdBackBitmap);
 
+            }
 
-            customerIdFrontBitmap = BitmapFactory.decodeStream(new FileInputStream(customerIdFrontImage));
-            customerIdBackBitmap = BitmapFactory.decodeStream(new FileInputStream(customerIdBackImage));
+            if (customerIdFrontImage.exists()) {
+                customerIdFrontBitmap = BitmapFactory.decodeStream(new FileInputStream(customerIdFrontImage));
+                customerIdFront.setImageBitmap(customerIdFrontBitmap);
+            }
 
+            if (customerIdBackImage.exists()) {
+                customerIdBackBitmap = BitmapFactory.decodeStream(new FileInputStream(customerIdBackImage));
+                customerIdBack.setImageBitmap(customerIdBackBitmap);
+            }
 
-
-            customerIdFront.setImageBitmap(customerIdFrontBitmap);
-            customerIdBack.setImageBitmap(customerIdBackBitmap);
-            nomineeIdBack.setImageBitmap(nomineeIdBackBitmap);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -119,9 +132,18 @@ public class PhotoPreviewActivity extends Activity {
         printPhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                printPhotoBtn.setEnabled(false);
+                Toast.makeText(getApplicationContext(), "please wait", Toast.LENGTH_SHORT).show();
+
                 try {
-                    FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, customerImageBitmap, "customer.png");
-                    FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, nomineeImageBitmap, "nominee.png");
+                    if (customerImageBitmap != null) {
+                        FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, customerImageBitmap, "customer.png");
+
+                    }
+                    if (nomineeImageBitmap != null) {
+                        FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, nomineeImageBitmap, "nominee.png");
+                    }
                     webViewPrint = new WebViewPrint(PhotoPreviewActivity.this);
                     webViewPrint.print(getHtmlFile("photo"));
 
@@ -137,11 +159,30 @@ public class PhotoPreviewActivity extends Activity {
                                       {
                                           @Override
                                           public void onClick(View v) {
+
+                                              printIdBtn.setEnabled(false);
+                                              Toast.makeText(getApplicationContext(), "please wait", Toast.LENGTH_SHORT).show();
+
+
                                               try {
-                                                  FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, customerIdFrontBitmap, "customerNIDFront.png");
-                                                  FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, customerIdBackBitmap, "customerNIDBack.png");
-                                                  FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, nomineeIdFrontBitmap, "nomineeNIDFront.png");
-                                                  FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, nomineeIdBackBitmap, "nomineeNIDBack.png");
+                                                  if (customerIdFrontBitmap != null) {
+                                                      FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, customerIdFrontBitmap, "customerNIDFront.png");
+
+                                                  }
+                                                  if (customerIdBackBitmap != null) {
+                                                      FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, customerIdBackBitmap, "customerNIDBack.png");
+
+                                                  }
+                                                  if (nomineeIdFrontBitmap != null) {
+                                                      FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, nomineeIdFrontBitmap, "nomineeNIDFront.png");
+
+                                                  }
+                                                  if (nomineeIdBackBitmap != null) {
+                                                      FileHelper.saveBitmapFileToExternalCacheDirectory(PhotoPreviewActivity.this, nomineeIdBackBitmap, "nomineeNIDBack.png");
+
+                                                  }
+
+
                                                   webViewPrint = new WebViewPrint(PhotoPreviewActivity.this);
                                                   webViewPrint.print(getHtmlFile("nid"));
 
@@ -154,6 +195,13 @@ public class PhotoPreviewActivity extends Activity {
         );
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        printIdBtn.setEnabled(true);
+        printPhotoBtn.setEnabled(true);
     }
 
     public static Bitmap getBitmapFromAsset(Context context, String filePath) {

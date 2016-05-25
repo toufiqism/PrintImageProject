@@ -75,78 +75,16 @@ public class AppUtils {
     public static String nid = "";
 
 
-    public static void clearRetryInfo() {
-        No_OF_RETRY = 0;
-        No_OF_ACK_RETRY = 0;
-        RETRY_REQUEST_ID = "";
-        IS_RETRY = false;
-
-    }
-
-    public static byte[] drawableToByteArray(int d, Context context) {
-
-        Drawable drawable = context.getResources().getDrawable(d);
-
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] bitMapData = stream.toByteArray();
 
 
-        return bitMapData;
-    }
 
 
-    public static File getChequeImageFile() {
-        return getOutputFileForCheque("Cheque_Image");
-    }
 
-    public static File getCroppedChequeImageFile() {
-        return getOutputFileForCheque(CHEQUE_CROPPED_IMAGE_NAME);
-    }
 
-    private static File getOutputFileForCheque(String FileNameCheque) {
-        File mediaStoreageDirCheque = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), AppName);
-        if (!mediaStoreageDirCheque.exists()) {
-            if (!mediaStoreageDirCheque.mkdirs()) {
-                PrintError("Failed to create Directory");
-                return null;
-            }
 
-        }
-        File mediaFileForCheque = new File(mediaStoreageDirCheque.getPath() + File.separator + FileNameCheque + ".jpg");
-        if (mediaFileForCheque.exists())
-            mediaFileForCheque.delete();
 
-        return mediaFileForCheque;
 
-    }
 
-    public static void ShowToast(Context context, String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-    }
-
-    public static void ShowToast(Context context, String msg, int duration) {
-
-        if (duration == 0) {
-            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-        } else if (duration == 1) {
-            Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
-
-        }
-    }
-
-    public static boolean isNetworkAvailable(Context c) {
-        ConnectivityManager cm = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
-    }
-
-    public static String addFractionPartInAmount(String amount) {
-        return new String(amount.substring(0, amount.indexOf('.')) + ".00");
-
-    }
 
     /**
      * Prints the message of an exception to log and shows a toast
@@ -158,13 +96,7 @@ public class AppUtils {
         // AppUtils.ShowToast(context, error);
     }
 
-    public static Boolean IsCameraAvailable(Context context) {
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-    }
 
-    public static File getFile(String fileName) {
-        return GetNextOutputFile(fileName);
-    }
 
     /*public static File getImageFile() {
         return GetNextOutputFile("Image");
@@ -324,13 +256,6 @@ public class AppUtils {
         return bmp;
     }
 
-    public static String[] getMagneticStripeInfo(String infoString) {
-
-        String[] magInfos = infoString.split("\\^");
-
-        return magInfos;
-
-    }
 
 
     public static boolean isInternetAvailable(Context context) {
@@ -406,104 +331,6 @@ public class AppUtils {
             finalIFRPic.delete();
         }
         return finalIFRPic;
-    }
-
-
-    public static File ScaledFileForCheque() {
-        return getScaledFileForCheque("scaled");
-    }
-
-    private static File getScaledFileForCheque(String string) {
-        // TODO Auto-generated method stub
-        File mediaStorageDirCheque = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), AppName);
-        if (!mediaStorageDirCheque.exists()) {
-            if (!mediaStorageDirCheque.mkdirs()) {
-                PrintError("Failed to create Dir");
-                return null;
-            }
-
-        }
-        File scaledCheque = new File(mediaStorageDirCheque.getPath() + File.separator + string + ".jpg");
-        if (scaledCheque.exists()) {
-            scaledCheque.delete();
-        }
-        return scaledCheque;
-    }
-
-    public static File ScaledFileForChequeBackFinal() {
-        // TODO Auto-generated method stub
-        return getScaledFileForChequeBackFinal("scaled_back_final");
-    }
-
-    private static File getScaledFileForChequeBackFinal(String strings) {
-        // TODO Auto-generated method stub
-        File mediaStorageDirChequeBack = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), AppName);
-        if (!mediaStorageDirChequeBack.exists()) {
-            if (!mediaStorageDirChequeBack.mkdirs()) {
-                PrintError("Failed to create Dir");
-                return null;
-            }
-
-        }
-        File scaledCheque = new File(mediaStorageDirChequeBack.getPath() + File.separator + strings + ".jpg");
-        if (scaledCheque.exists()) {
-            scaledCheque.delete();
-        }
-        return scaledCheque;
-    }
-
-    public static File ScaledFileForChequeBack() {
-        return getScaledFileForChequeBack("scaled_back");
-    }
-
-    private static File getScaledFileForChequeBack(String string) {
-
-        // TODO Auto-generated method stub
-        File mediaStorageDirCheque = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), AppName);
-        if (!mediaStorageDirCheque.exists()) {
-            if (!mediaStorageDirCheque.mkdirs()) {
-                PrintError("Failed to create Dir");
-                return null;
-            }
-
-        }
-        File scaledCheque = new File(mediaStorageDirCheque.getPath() + File.separator + string + ".jpg");
-        if (scaledCheque.exists()) {
-            scaledCheque.delete();
-        }
-        return scaledCheque;
-    }
-
-    public static String vatPortionCalculate(double chargePlusVat) {
-        double vat = getVat();
-
-        double vatPortion = ((vat * chargePlusVat) / (vat + 100));
-        DecimalFormat df = new DecimalFormat("####0.00");
-
-
-        return df.format(vatPortion);
-    }
-
-    public static String chargePortionCalculate(double chargePlusVat) {
-        DecimalFormat df = new DecimalFormat("####0.00");
-        double vat = getVat();
-
-        double vatPortion = ((vat * chargePlusVat) / (vat + 100));
-
-
-        double chargePortion = chargePlusVat - vatPortion;
-
-        return df.format(chargePortion);
-
-    }
-
-
-    private static double getVat() {
-        //if metadata provides vat amount then get it from there if not then return 15.0
-        return 15.0;
     }
 
 
