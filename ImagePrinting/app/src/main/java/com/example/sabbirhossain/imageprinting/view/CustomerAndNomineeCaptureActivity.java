@@ -31,13 +31,13 @@ import java.util.List;
 /**
  * Created by Toufiq on 12/28/15.
  */
-public class CustomerCaptureActivity extends Activity {
-    public static final String TAG = "CustomerCaptureActivity";
+public class CustomerAndNomineeCaptureActivity extends Activity {
+    public static final String TAG = "CustomerAndNomineeCaptureActivity";
     public static final String IMAGE_PATH = "imagepath";
 
     Context mContext;
     Camera mCamera;
-    CustomerCameraPreview mCameraPreview;
+    CustomerAndNomineeCameraPreview mCameraPreview;
 
     SharedPreferences sharedPreference;
     SharedPreferences.Editor defaultSharedPreferencesEditor;
@@ -57,7 +57,7 @@ public class CustomerCaptureActivity extends Activity {
 
         mContext = this;
         mCamera = getCamera();
-        mCameraPreview = new CustomerCameraPreview(mContext, mCamera);
+        mCameraPreview = new CustomerAndNomineeCameraPreview(mContext, mCamera);
         sharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
         defaultSharedPreferencesEditor = sharedPreference.edit();
         defaultSharedPreferencesEditor.commit();
@@ -229,7 +229,7 @@ public class CustomerCaptureActivity extends Activity {
 
     void ReturnActivityResult(String  imagePath) {
         Intent data = new Intent();
-        data.putExtra(CustomerCaptureActivity.IMAGE_PATH, imagePath);
+        data.putExtra(CustomerAndNomineeCaptureActivity.IMAGE_PATH, imagePath);
         if (getParent() == null) {
             setResult(Activity.RESULT_OK, data);
         } else {

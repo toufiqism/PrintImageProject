@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by Toufiq on 12/28/15.
  */
-public class CustomerCameraPreview extends SurfaceView implements SurfaceHolder.Callback {
+public class CustomerAndNomineeCameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
 
     Context mContext;
@@ -33,7 +33,7 @@ public class CustomerCameraPreview extends SurfaceView implements SurfaceHolder.
     SharedPreferences.Editor defaultSharedPreferencesEditor;
     String manufacturerName = "";
 
-    public CustomerCameraPreview(Context context, Camera camera) {
+    public CustomerAndNomineeCameraPreview(Context context, Camera camera) {
         super(context);
 
         mContext = context;
@@ -119,7 +119,7 @@ public class CustomerCameraPreview extends SurfaceView implements SurfaceHolder.
                 break;
         }
 
-        Log.d(CustomerCameraPreview.class.getSimpleName(), "Surface Changed. height: " + height + " width: "
+        Log.d(CustomerAndNomineeCameraPreview.class.getSimpleName(), "Surface Changed. height: " + height + " width: "
                 + width + " rotation: " + rotation);
 
         // set some parameters for better photo in portrait mode
@@ -192,9 +192,9 @@ public class CustomerCameraPreview extends SurfaceView implements SurfaceHolder.
             mCamera.setPreviewDisplay(holder);
             mCamera.startPreview();
         } catch (IOException e) {
-            Log.d(CustomerCameraPreview.class.getSimpleName(), "IOException: " + e.getMessage());
+            Log.d(CustomerAndNomineeCameraPreview.class.getSimpleName(), "IOException: " + e.getMessage());
         } catch (Exception e) {
-            Log.d(CustomerCameraPreview.class.getSimpleName(), "Exception: " + e.getMessage());
+            Log.d(CustomerAndNomineeCameraPreview.class.getSimpleName(), "Exception: " + e.getMessage());
         }
 
     }
