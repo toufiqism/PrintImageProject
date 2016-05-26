@@ -16,7 +16,7 @@ import com.example.sabbirhossain.imageprinting.utility.AppConstant;
 public class SelectPrintDocumentListActivity extends AppCompatActivity {
 
     CheckBox customerPhoto, customerId, nomineePhoto, nomineeId;
-    Button proceedBtn;
+    Button proceedBtn, cancel;
     String TAG = "SelectPrintDocumentListActivity";
 
     @Override
@@ -27,6 +27,7 @@ public class SelectPrintDocumentListActivity extends AppCompatActivity {
         customerId = (CheckBox) findViewById(R.id.customerId);
         nomineeId = (CheckBox) findViewById(R.id.nomeneeId);
         nomineePhoto = (CheckBox) findViewById(R.id.nomineePhoto);
+        cancel = (Button) findViewById(R.id.cancel);
 
 
         proceedBtn = (Button) findViewById(R.id.proceed);
@@ -59,6 +60,13 @@ public class SelectPrintDocumentListActivity extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.exit(1);
             }
         });
        /* PackageManager p = getPackageManager();
