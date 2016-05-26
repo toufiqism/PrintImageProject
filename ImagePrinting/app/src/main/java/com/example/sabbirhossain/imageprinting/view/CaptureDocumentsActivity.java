@@ -25,7 +25,7 @@ import java.io.File;
  */
 public class CaptureDocumentsActivity extends Activity {
     RelativeLayout customerPhotoLayout, customerIdLayout, nomineePhotoLayout, nomineeIdLayout;
-    Button proceedBtn;
+    Button proceedBtn, btnCancelInDocPrintCapture;
     Handler handler = new Handler(Looper.getMainLooper());
     ImageView customerPhotoImg;
     ImageView customerIdFrontImg;
@@ -50,7 +50,7 @@ public class CaptureDocumentsActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
     }
 
     @Override
@@ -69,6 +69,7 @@ public class CaptureDocumentsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture_document);
         AppUtils.deleteImageFolder();
+        btnCancelInDocPrintCapture = (Button) findViewById(R.id.btnCancelInDocPrintCapture);
         customerIdLayout = (RelativeLayout) findViewById(R.id.customerIdLayout);
         customerPhotoLayout = (RelativeLayout) findViewById(R.id.customerPhotoLayout);
         nomineeIdLayout = (RelativeLayout) findViewById(R.id.nomineeIdLayout);
@@ -95,18 +96,26 @@ public class CaptureDocumentsActivity extends Activity {
         if (AppConstant.customerPhotoFlag == true) {
             customerPhotoLayout.setVisibility(View.VISIBLE);
 
+        } else {
+            customerPhotoLayout.setVisibility(View.GONE);
         }
         if (AppConstant.customerIdFlag == true) {
             customerIdLayout.setVisibility(View.VISIBLE);
 
+        } else {
+            customerIdLayout.setVisibility(View.GONE);
         }
         if (AppConstant.nomineePhotoFlag == true) {
             nomineePhotoLayout.setVisibility(View.VISIBLE);
 
+        } else {
+            nomineePhotoLayout.setVisibility(View.GONE);
         }
         if (AppConstant.nomineeIdFlag == true) {
             nomineeIdLayout.setVisibility(View.VISIBLE);
 
+        } else {
+            nomineeIdLayout.setVisibility(View.GONE);
         }
 
         takePhoto();
@@ -116,10 +125,19 @@ public class CaptureDocumentsActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(CaptureDocumentsActivity.this, PhotoPreviewActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });
-
+        btnCancelInDocPrintCapture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CaptureDocumentsActivity.this, SelectPrintDocumentListActivity.class);
+                startActivity(i);
+                AppConstant.clearAll();
+                finish();
+            }
+        });
 
     }
 

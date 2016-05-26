@@ -190,6 +190,16 @@
                 />
         </RelativeLayout>
 
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/button2"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@color/whiteColor"
+            android:text="Done"
+            android:layout_below="@+id/printId"
+            android:layout_alignStart="@+id/printId" />
+
     </RelativeLayout>
 
 

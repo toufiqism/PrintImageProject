@@ -29,7 +29,7 @@ import java.io.InputStream;
 public class PhotoPreviewActivity extends Activity {
     private static final String TAG = PhotoPreviewActivity.class.getSimpleName();
     Button printPhotoBtn;
-    Button printIdBtn;
+    Button printIdBtn, button2;
     private WebViewPrint webViewPrint;
     public static final String bankName = "city";
     private static final String PHOTO_TEMPLATE_HTML = bankName + "/photoTemplate.html";
@@ -62,6 +62,7 @@ public class PhotoPreviewActivity extends Activity {
 
         printPhotoBtn = (Button) findViewById(R.id.printPhoto);
         printIdBtn = (Button) findViewById(R.id.printId);
+        button2 = (Button) findViewById(R.id.button2);
         Intent intent = getIntent();
 
         photoGrid_1 = (ImageView) findViewById(R.id.photoGrid_1);
@@ -128,6 +129,20 @@ public class PhotoPreviewActivity extends Activity {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(0);
+
+                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+                homeIntent.addCategory(Intent.CATEGORY_HOME);
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(homeIntent);
+                finish();
+            }
+        });
 
         printPhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,6 +209,11 @@ public class PhotoPreviewActivity extends Activity {
 
         );
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 

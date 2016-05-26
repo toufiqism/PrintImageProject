@@ -1,6 +1,8 @@
 package com.example.sabbirhossain.imageprinting.view;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,40 +37,52 @@ public class SelectPrintDocumentListActivity extends AppCompatActivity {
                 if (customerId.isChecked() || customerPhoto.isChecked() || nomineeId.isChecked() || nomineePhoto.isChecked()) {
 
                     if (customerId.isChecked()) {
-                        AppConstant.customerIdFlag =true;
+                        AppConstant.customerIdFlag = true;
                     }
                     if (customerPhoto.isChecked()) {
-                        AppConstant.customerPhotoFlag =true;
+                        AppConstant.customerPhotoFlag = true;
 
                     }
                     if (nomineeId.isChecked()) {
-                        AppConstant.nomineeIdFlag =true;
+                        AppConstant.nomineeIdFlag = true;
 
                     }
                     if (nomineePhoto.isChecked()) {
-                        AppConstant.nomineePhotoFlag =true;
+                        AppConstant.nomineePhotoFlag = true;
 
                     }
-                    Intent intent=new Intent(SelectPrintDocumentListActivity.this,CaptureDocumentsActivity.class);
+                    Intent intent = new Intent(SelectPrintDocumentListActivity.this, CaptureDocumentsActivity.class);
                     startActivity(intent);
-                }
-                else {
-                    Toast.makeText(SelectPrintDocumentListActivity.this,"select something",Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    Toast.makeText(SelectPrintDocumentListActivity.this, "select something", Toast.LENGTH_LONG).show();
                 }
 
 
             }
         });
-
+       /* PackageManager p = getPackageManager();
+        ComponentName componentName = new ComponentName(this, SelectPrintDocumentListActivity.class); // activity which is first time open in manifiest file which is declare as <category android:name="android.intent.category.LAUNCHER" />
+        p.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        *//*PackageManager p = getPackageManager();
+        ComponentName componentName = new ComponentName(this, com.apps.MainActivity.class);
+        p.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);*/
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        AppConstant.nomineeIdFlag =false;
-        AppConstant.nomineePhotoFlag =false;
-        AppConstant.customerIdFlag =false;
-        AppConstant.customerPhotoFlag =false;
+     /*   android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory(Intent.CATEGORY_HOME);
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);*/
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

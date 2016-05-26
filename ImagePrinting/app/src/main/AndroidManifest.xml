@@ -18,6 +18,12 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.SelectPrintDocumentListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".view.MainScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
